@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 10 javaScript03</title>
+</head>
+<body>
+    <script>
+        let meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+        let diasSemana = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+
+        let fecha = new Date();
+
+        let diaSemana = diasSemana[fecha.getDay()];
+        let dia = fecha.getDate();
+        let mes = meses[fecha.getMonth()];
+        let año = fecha.getFullYear();
+
+        console.log("Hoy es", diaSemana, ",", dia, " de", mes, "de", año);
+    </script>
+    
+</body>
+</html>

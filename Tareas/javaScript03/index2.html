@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 2 javaScript03</title>
+</head>
+<body>
+    <script>
+        let notas = [2, 4, 5, 9, 0];
+        let notaMaxima = 0;
+        let notaMinima = 100;
+        let notaMedia = 0;
+        let aprobados = 0;
+        let suspensos = 0;
+        for (let i of notas) {
+            if(i >= 0 && i <= 10){
+                notaMedia+=i;
+                if (i > notaMaxima) {
+                    notaMaxima = i;
+                }
+                if (i < notaMinima){
+                    notaMinima = i;
+                }
+                if (i < 5){
+                    suspensos++;
+                }else{
+                    aprobados++;
+                }
+            }else{
+                console.log(i, " No es una nota, debe ser un valor entre 0 y 10");
+            }
+        }
+        notaMedia=notaMedia/notas.length;
+        console.log("Nota media: ", notaMedia);
+        console.log("Nota máxima: ", notaMaxima);
+        console.log("Nota mínima: ", notaMinima);
+        console.log("Número de aprobados: ", aprobados);
+        console.log("Número de suspensos: ", suspensos);
+    </script>
+    
+</body>
+</html>

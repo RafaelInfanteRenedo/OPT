@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 7 javaScript02</title>
+</head>
+<body>
+    <script>
+        let tarjeta = prompt("Introduce el número de tarjeta (16 dígitos):");
+        let nombre = prompt("Introduce tu nombre:");
+
+        let ultimos4 = tarjeta.slice(-4);
+
+        let tarjetaEnmascarada = ultimos4.padStart(16, "*");
+
+            tarjetaEnmascarada =
+            tarjetaEnmascarada.slice(0, 4) + " " +
+            tarjetaEnmascarada.slice(4, 8) + " " +
+            tarjetaEnmascarada.slice(8, 12) + " " +
+            tarjetaEnmascarada.slice(12, 16);
+
+        let nombreFormateado = nombre.padEnd(20, ".");
+
+        console.log(tarjetaEnmascarada);
+        console.log(nombreFormateado);
+    </script>
+    
+</body>
+</html>

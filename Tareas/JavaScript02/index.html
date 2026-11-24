@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 1 javaScript02</title>
+</head>
+<body>
+    <script>
+        let cad = prompt("Introduce una palabra o frase");
+        function contarVocales(cad) {
+        let contador = 0;
+
+        for (let letra of cad.toLowerCase()) {
+            if ("aeiou".includes(letra)) {
+                contador++;
+            }
+        }
+
+        return contador;
+        }
+
+        console.log("El número total de vocales es: ", contarVocales(cad));
+    </script>
+    
+</body>
+</html>

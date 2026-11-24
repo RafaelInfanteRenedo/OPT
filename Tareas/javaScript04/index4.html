@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej4</title>
+</head>
+<body>
+    <script>
+        const productos = [
+        { nombre: "Teclado", precio: 25, stock: 10 },
+        { nombre: "Ratón", precio: 12, stock: 0 },
+        { nombre: "Monitor", precio: 150, stock: 4 },
+        { nombre: "Cable HDMI", precio: 8, stock: 30 }
+        ];
+        let cont = 1;
+        productos.forEach(producto => {
+            console.log(cont + ". " + producto.nombre + " - " + producto.precio + "€.");
+            cont++;
+        });
+
+        const nombres = productos.map(producto => producto.nombre);
+        console.log(nombres);
+
+        const preciosConIva = productos.map(producto => producto.precio+producto.precio*0.21);
+        console.log(preciosConIva);
+
+        const dispMenosCincuenta = productos.filter(producto => producto.stock > 0 && producto.precio < 50).map(producto => producto.nombre);
+        console.log(dispMenosCincuenta);
+    </script>
+</body>
+</html>

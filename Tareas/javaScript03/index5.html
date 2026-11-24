@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 5 javaScript03</title>
+</head>
+<body>
+    <script>
+        let cad =[];
+        function valores(){
+            while (true){
+                let num = prompt("Dame un numero: ");
+                if (isNaN(num)){
+                    break;
+                }else{
+                    cad.push(parseFloat(num));
+                }
+            }
+            let suma = 0;
+            for (let i of cad){
+                suma+=i;
+            }
+            return suma;
+        }
+        console.log("La suma de los numeros introducidos es: ", valores());
+    </script>
+    
+</body>
+</html>

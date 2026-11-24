@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej7</title>
+</head>
+<body>
+    <script>
+        const pedidos = [
+            { cliente: "Ana", producto: "Teclado", cantidad: 2, precio: 25, enviado: true },
+            { cliente: "Luis", producto: "Monitor", cantidad: 1, precio: 150, enviado: false },
+            { cliente: "Ana", producto: "Ratón", cantidad: 3, precio: 12, enviado: true },
+            { cliente: "Marta", producto: "Cable", cantidad: 5, precio: 8, enviado: false },
+            { cliente: "Luis", producto: "Teclado", cantidad: 1, precio: 25, enviado: true }
+        ];
+
+        pedidos.forEach((pedido, indice) => {
+            console.log(`${indice + 1}. ${pedido.cliente} - ${pedido.producto} x${pedido.cantidad}`);
+        });
+
+        const importes = pedidos.map(pedido => pedido.precio * pedido.cantidad);
+        console.log(importes);
+
+        const pendientes = pedidos
+            .filter(pedido => !pedido.enviado)
+            .map(pedido => pedido.cliente);
+
+        console.log(pendientes);
+
+        const total = pedidos.reduce((acumulador, pedido) => {
+            return acumulador + pedido.precio * pedido.cantidad;
+        }, 0);
+
+        console.log("Importe total:", total);
+
+        const gastoPorCliente = pedidos.reduce((acumulador, pedido) => {
+            const importe = pedido.precio * pedido.cantidad;
+
+            if (acumulador[pedido.cliente] === undefined) {
+                acumulador[pedido.cliente] = 0;
+            }
+
+            acumulador[pedido.cliente] += importe;
+
+            return acumulador;
+        }, {});
+
+        console.log(gastoPorCliente);
+
+        const hayPendientes = pedidos.some(pedido => !pedido.enviado);
+        console.log("Hay pedidos pendientes:", hayPendientes);
+
+        const todosSuperan20 = pedidos.every(
+            pedido => pedido.precio * pedido.cantidad > 20
+        );
+
+        console.log("Todos superan 20 €:", todosSuperan20);
+
+        const pedidosOrdenados = [...pedidos].sort((a, b) => {
+            return (b.precio * b.cantidad) - (a.precio * a.cantidad);
+        });
+
+        console.log(pedidosOrdenados);
+
+        const clientes = new Set(pedidos.map(pedido => pedido.cliente));
+
+        console.log("Clientes distintos:", clientes);
+        console.log("Número de clientes:", clientes.size);
+
+    </script>
+</body>
+</html>

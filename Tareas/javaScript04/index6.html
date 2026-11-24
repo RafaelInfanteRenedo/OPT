@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej6</title>
+</head>
+<body>
+    
+    <script>
+        
+        const texto = "Ana y Luis van a la casa de Ana. Luis lleva el radar y Ana lleva la sal. La casa de Luis es la casa de Ana.";
+
+        const textoLimpio = texto.toLowerCase().replaceAll(".", "");
+        const palabras = textoLimpio.split(" ");
+
+        const textoMap = new Map();
+
+        palabras.forEach(element => {
+            if (textoMap.has(element)) {
+                textoMap.set(element, textoMap.get(element) + 1);
+            } else {
+                textoMap.set(element, 1);
+            }
+        });
+
+        const ranking = [...textoMap]
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3)
+            .map(([palabra, frecuencia]) => `${palabra}: ${frecuencia}`);
+
+        console.log("Ranking:");
+        ranking.forEach(element => console.log(element));
+
+        const set = new Set(palabras);
+        console.log("Hay " + set.size + " palabras distintas");
+
+        const palabraMasLarga = palabras.reduce((masLarga, palabra) => {
+            if (palabra.length > masLarga.length) {
+                return palabra;
+            } else {
+                return masLarga;
+            }
+        }, "");
+
+        console.log(palabraMasLarga);
+
+        function esPalindromo(palabra) {
+            return palabra === palabra.split("").reverse().join("");
+        }
+
+        const palabrasUnicas = [...new Set(palabras)];
+
+        const palindromos = palabrasUnicas.filter(palabra =>
+            palabra.length > 1 && esPalindromo(palabra)
+        );
+
+        console.log("Palíndromos:", palindromos);
+
+    </script>
+</body>
+</html>

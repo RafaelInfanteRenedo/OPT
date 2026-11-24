@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej8</title>
+</head>
+<body>
+    <script>
+
+        const biblioteca = [
+            { titulo: "El Quijote", autor: "Cervantes", anio: 1605, disponible: true },
+            { titulo: "La Galatea", autor: "Cervantes", anio: 1585, disponible: true },
+            { titulo: "Hamlet", autor: "Shakespeare", anio: 1603, disponible: true },
+            { titulo: "Romeo y Julieta", autor: "Shakespeare", anio: 1597, disponible: false },
+            { titulo: "La Celestina", autor: "Fernando de Rojas", anio: 1499, disponible: true },
+            { titulo: "El Lazarillo", autor: "Anónimo", anio: 1554, disponible: false }
+        ];
+
+        function añadirLibro(biblioteca, libro) {
+            const existe = biblioteca.some(
+                b => b.titulo.toLowerCase() === libro.titulo.toLowerCase()
+            );
+
+            if (existe) {
+                return false;
+            }
+
+            biblioteca.push(libro);
+            return true;
+        }
+
+        function buscarPorAutor(biblioteca, texto) {
+            return biblioteca.filter(
+                libro => libro.autor.toLowerCase().includes(texto.toLowerCase())
+            );
+        }
+
+        function porAutor(biblioteca) {
+            return biblioteca.reduce((mapa, libro) => {
+                if (!mapa.has(libro.autor)) {
+                    mapa.set(libro.autor, []);
+                }
+
+                mapa.get(libro.autor).push(libro.titulo);
+
+                return mapa;
+            }, new Map());
+        }
+
+        function masAntiguo(biblioteca) {
+            return biblioteca.reduce((antiguo, libro) => {return libro.anio < antiguo.anio ? libro : antiguo;});
+        }
+
+            function prestar(biblioteca, titulo) {
+            const libro = biblioteca.find(
+                b => b.titulo.toLowerCase() === titulo.toLowerCase()
+            );
+
+            if (!libro) {
+                return "El libro no existe";
+            }
+
+            if (!libro.disponible) {
+                return "El libro ya está prestado";
+            }
+
+            libro.disponible = false;
+            return "Libro prestado correctamente";
+        }
+
+        function listado(biblioteca) {
+            const ordenados = [...biblioteca].sort((a, b) => a.anio - b.anio);
+
+            ordenados.forEach(libro => {
+                const estado = libro.disponible ? "disponible" : "prestado";
+
+                console.log(libro.anio, libro.titulo, libro.autor, estado);
+            });
+        }
+
+        function informe(biblioteca) {
+            const autores = porAutor(biblioteca);
+            const antiguo = masAntiguo(biblioteca);
+            return {total: biblioteca.length, disponibles: biblioteca.filter(libro => libro.disponible).length, autores: autores.size, masAntiguo: antiguo.titulo};
+        }
+
+        console.log(añadirLibro(biblioteca, {titulo: "Don Juan Tenorio", autor: "José Zorrilla", anio: 1844, disponible: true}));
+
+        console.log(añadirLibro(biblioteca, {titulo: "EL QUIJOTE", autor: "Cervantes", anio: 1605, disponible: true}));
+
+        console.log(buscarPorAutor(biblioteca, "cerv"));
+        console.log(porAutor(biblioteca));
+        console.log(masAntiguo(biblioteca));
+        console.log(prestar(biblioteca, "Hamlet"));
+        console.log(prestar(biblioteca, "Hamlet"));
+        console.log(prestar(biblioteca, "Libro inventado"));
+        listado(biblioteca);
+        const informeFinal = informe(biblioteca);
+        console.log(JSON.stringify(informeFinal, null, 2));
+    </script>
+</body>
+</html>

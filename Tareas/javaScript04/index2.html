@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej2</title>
+</head>
+<body>
+    <script>
+        
+        const productos = [
+        { nombre: "manzana", categoria: "fruta" },
+        { nombre: "leche", categoria: "lacteo" },
+        { nombre: "pera", categoria: "fruta" },
+        { nombre: "barra", categoria: "pan" }
+        ];
+
+        const agrupados = productos.reduce((acc, producto) => {
+        const categoria = producto.categoria;
+
+        if (!acc[categoria]) {
+            acc[categoria] = [];
+        }
+
+        acc[categoria].push(producto.nombre);
+
+        return acc;
+        }, {});
+
+        console.log(agrupados);
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej5</title>
+</head>
+<body>
+    <script>
+        const contactos = [
+        { nombre: "Diego", telefono: 666777888, ciudad: "Sevilla" },
+        { nombre: "Maria", telefono: 333444555, ciudad: "Teruel" },
+        { nombre: "Faly", telefono: 111222000, ciudad: "Sevilla" },
+        { nombre: "Marina", telefono: 909191929, ciudad: "Villazarcillo" }
+        ];
+
+        function añadirContacto(contacto){
+            const existe = contactos.some(elemento => elemento.nombre == contacto.nombre);
+            if(existe){
+                throw new Error("Ya hay un contacto con ese nombre");
+            }else{
+                contactos.push(contacto);
+            }
+        }
+
+        function buscar(texto){
+            const contiene = contactos.some(elemento => elemento.nombre.toLowerCase().includes(texto.toLowerCase()));
+            if (contiene){
+                const cont = contactos.filter(elemento => elemento.nombre.toLowerCase().includes(texto.toLowerCase()));
+                return cont;
+            }else{
+                console.log("No hay contactos que incluyan esa cadena de texto");
+            }
+        }
+
+        function porCiudad() {
+            const ciudades = contactos.reduce((acc, elemento) => {
+                const ciudad = elemento.ciudad;
+
+                if (!acc[ciudad]) {
+                    acc[ciudad] = [];
+                }
+
+                acc[ciudad].push(elemento.nombre);
+
+                return acc;
+            }, {});
+
+            return ciudades;
+        }
+
+        function ciudades(){
+            const ciudades = contactos.map(elemento => elemento.ciudad);
+            const s = new Set(ciudades);
+            return s;
+        }
+
+        function listado(){
+            contactos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            contactos.forEach(elemento => {
+                console.log("<< " + elemento.nombre + " - " + elemento.telefono + " (" + elemento.ciudad + ")>>");
+            });
+        }
+
+        console.log(porCiudad());
+        console.log("");
+        console.log(ciudades());
+        console.log("");
+        listado();
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript04 ej3</title>
+</head>
+<body>
+    <script>
+        
+        const operaciones = new Map([
+        ["+", suma],
+        ["-", resta],
+        ["*", multiplicacion],
+        ["/", division]
+        ]);
+
+        function suma(a, b) { return a+b; }
+        function resta(a, b) { return a-b; }
+        function multiplicacion(a, b) { return a*b; }
+        function division(a, b) {
+            if (b === 0) {
+                throw new Error("No se puede dividir entre cero");
+            }
+            return a/b;
+        }
+
+        function calcular(operador, a, b) {
+            if (!operaciones.has(operador)) {
+                throw new Error("Operador no válido");
+            }
+            const operacion = operaciones.get(operador);
+            return operacion(a, b);
+        }
+
+        console.log(calcular("*", 5, 3));
+        
+    </script>
+</body>
+</html>

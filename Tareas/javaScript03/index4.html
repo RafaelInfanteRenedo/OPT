@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 4 javaScript03</title>
+</head>
+<body>
+    <script>
+        let notas =[2,4,2,8,4,10,8,15];
+        let aux = [];
+        for (let i of notas){
+            if (aux.includes(i)){
+                console.log("El numero " , i, " se repite");
+            }else{
+                aux.push(i);
+            }
+        }
+        console.log("Array sin números repetidos: ", aux);
+    </script>
+    
+</body>
+</html>

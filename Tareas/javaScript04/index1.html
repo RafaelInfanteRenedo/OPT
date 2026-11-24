@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const notas = [4.5, 6, 8.5, 9.8, 3, 7];
+        let cont = 1;
+        for (let i of notas) {
+            console.log("Nota en la posición " + cont + ": " + i);
+            cont++;
+        }
+        let masCeroCinco = [];
+        for (let i of notas) {
+            if (i < 9.5) {
+                masCeroCinco = notas.map(nota => nota + 0.5);
+            }else{
+                masCeroCinco = notas.map(nota => nota);
+            }
+        }
+        console.log("Las notas con 0.5 puntos adicionales son: " + masCeroCinco);
+
+        let aprobados = notas.filter(nota => nota >= 5);
+        console.log("Las notas aprobadas son: " + aprobados);
+
+        let mediaNotas = notas.reduce((a, b) => a + b, 0) / notas.length;
+        console.log("La nota media es: " + mediaNotas);
+
+        let mejoresNotas = notas.sort((a, b) => b - a).slice(0, 3);
+        console.log("Las mejores notas son: " + mejoresNotas);
+    </script>
+</body>
+</html>

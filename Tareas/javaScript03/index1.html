@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 1 javaScript03</title>
+</head>
+<body>
+    <script>
+        let cad = [12, 13, 43, 35];
+        function maximo(cad) {
+        let numMaximno = 0;
+        for (let i of cad) {
+            if (i > numMaximno) {
+                numMaximno = i;
+            }
+        }
+
+        return numMaximno;
+        }
+
+        console.log("El numero con mayor valor es: ", maximo(cad));
+    </script>
+    
+</body>
+</html>

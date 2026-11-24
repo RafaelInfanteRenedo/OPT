@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 6 javaScript03</title>
+</head>
+<body>
+    <script>
+        let cad1 =[1, 2, 3, 4, 5];
+        let cad2 =[1, 2, 3, 4, 5];
+        let aux = [];
+        function valores(cad1, cad2){
+            for (let i = 0; i < cad1.length; i++){
+                aux.push(cad1[i]+cad2[i]);
+            }
+            return aux;
+        }
+        console.log("La suma de los dos arrays es: ", valores(cad1, cad2));
+    </script>
+    
+</body>
+</html>

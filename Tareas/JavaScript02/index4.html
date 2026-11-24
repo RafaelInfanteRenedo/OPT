@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 4 javaScript02</title>
+</head>
+<body>
+    <script>
+        let cadena = prompt("Introduce una cadena");
+        let letra = prompt("Introduce una letra");
+        let cont = 0;        
+        function numeroLetras(cadena, letra) {
+            for (let letr of cadena) {
+                if (letra.includes(letr)) {
+                    cont++;
+                }
+            }
+
+            return cont;
+        }
+
+        console.log("La cadena " , cadena, " tiene la letra ", letra, numeroLetras(cadena, letra), " veces.");
+    </script>
+    
+</body>
+</html>

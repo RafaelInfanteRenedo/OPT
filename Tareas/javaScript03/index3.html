@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 3 javaScript03</title>
+</head>
+<body>
+    <script>
+        let notas = [4, 8, 15, 16, 23, 42];
+        let aux = [];
+        cont = 0;
+        for (let i of notas){
+            aux.push(notas[notas.length-1 - cont]);
+            cont++;
+        }
+        console.log(aux);
+    </script>
+    
+</body>
+</html>

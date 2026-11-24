@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ej 7 javaScript03</title>
+</head>
+<body>
+    <script>
+        let aux = [];
+        console.log("Introduzca 8 numeros")
+        while (true){
+            let num;
+            try {
+                num = parseFloat(prompt("Introduce un numero: "));
+            } catch (error) {
+                console.log("Valor no válido, introduzca un numero");
+            }
+            aux.push(num);
+            if (aux.length == 8){
+                break;
+            }
+        }
+        let suma = 0;
+        for (let i of aux){
+            suma+=i;
+        }
+        let sumaMas36 = 0;
+        for (let i of aux){
+            if (i > 36){
+                sumaMas36+=i;
+            }
+        }
+        let mayores50 = 0;
+        for (let i of aux){
+            if (i > 50){
+                mayores50++;
+            }
+        }
+        console.log("La suma de los elementos arrays es: ", suma);
+        console.log("La suma de los elementos arrays mayores que 36 es: ", sumaMas36);
+        console.log("La cantidad de elementos del arrays mayores que 50 son: ", mayores50);
+    </script>
+    
+</body>
+</html>

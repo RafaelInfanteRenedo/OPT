@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style> 
+        .hecho { text-decoration: line-through; } 
+    </style> 
+    <button id="btn">Contar clics</button> 
+    <p>Clics: <span id="contador">0</span></p> 
+    <input id="texto" type="text" placeholder="Escribe algo"> 
+    <p id="eco"></p> 
+    <a id="enlace" href="https://www.wikipedia.org">Wikipedia</a> 
+    <ul id="tareas"> 
+        <li>Estudiar DOM</li> 
+        <li>Practicar eventos</li> 
+        <li>Hacer el boletín</li> 
+    </ul> 
+
+
+    <script>
+        let boton = document.getElementById("btn");
+        let cont = document.getElementById("contador");
+        let text = document.getElementById("texto");
+        let eco = document.getElementById("eco");
+        let enlace = document.getElementById("enlace");
+
+        text.addEventListener("input", escribe);
+        
+        let contador = 0;
+        boton.addEventListener("click", aumento);
+
+        enlace.addEventListener("click", confirmar);
+
+        function confirmar(evento){
+            let respuesta = confirm("¿Quieres abrir este enlace en una ventana nueva?");
+            if(!respuesta){
+                evento.preventDefault();
+            }
+        }
+
+        function escribe(){
+            eco.textContent = text.value.toUpperCase();
+        }
+        function aumento(){
+            contador++;
+            cont.textContent = contador;
+        }
+    </script>
+</body>
+</html>

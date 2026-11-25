@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="tareas"> 
+        <li>Estudiar DOM</li> 
+        <li>Practicar eventos</li>
+        <li>Hacer el boletín</li> 
+    </ul>
+
+    <script>
+        let elelist = document.createElement("li");
+        elelist.textContent = "Repasar formularios";
+        let elelist2 = document.createElement("li");
+        elelist2.textContent = "Leer los apuntes";
+        let lista = document.querySelector("ul");
+        lista.append(elelist);
+        lista.prepend(elelist2);
+        let li1 = document.querySelector("#tareas li:nth-of-type(1)");
+        let li2 = document.querySelector("#tareas li:nth-of-type(3)");
+        let li3 = document.querySelector("#tareas li:nth-of-type(4)");
+        let li4 = document.querySelector("#tareas li:nth-of-type(5)");
+        li1.remove();
+        li2.remove();
+        li3.remove();
+        li4.remove();
+
+        function agregarli(texto){
+            let li = document.createElement("li");
+            li.textContent = texto;
+            lista.append(li);
+        }
+
+        agregarli("Comprar el pan");
+    </script>
+</body>
+</html>

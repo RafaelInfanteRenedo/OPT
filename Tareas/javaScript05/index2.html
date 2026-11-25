@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style> 
+    .destacado { border: 3px solid black; padding: 10px; } 
+    .oculto { display: none; } 
+    </style> 
+    <h1 id="titulo" class="destacado">Título original</h1> 
+    <p id="mensaje" class="oculto">Texto de prueba</p> 
+    <a id="enlace" href="https://www.wikipedia.org">Wikipedia</a>
+
+
+    <script>
+        let titulo = document.getElementById("titulo");
+        titulo.textContent = "DOM en 2ºDAM";
+        titulo.style.color = "red";
+        titulo.style.backgroundColor = "yellow";
+        let enlace = document.getElementById("enlace");
+        enlace.setAttribute("href", "https://developer.mozilla.org");
+        enlace.textContent = "MDN Web Docs";
+        let texto = document.getElementById("mensaje");
+        console.log(document.body.contains(mensaje));
+        texto.innerHTML = "Hola <strong>DOM<strong/>";
+        texto.classList.toggle("oculto");
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo">Lista de la compra</h1> 
+    <p class="aviso">Revisa los productos antes de comprar.</p> 
+    <ul id="lista"> 
+        <li class="producto">Pan</li> 
+        <li class="producto">Leche</li> 
+        <li class="producto oferta">Huevos</li> 
+        <li class="producto">Fruta</li> 
+    </ul>
+
+    <script>
+        let titulo = document.getElementById("titulo");
+        console.log(titulo);
+        let lista = document.querySelectorAll("li");
+        let cont = 0;
+        lista.forEach(elemento => {
+            cont++;
+            console.log(elemento.textContent);
+        });
+        console.log("Hay " + cont + "elementos que son li");
+        let oferta = document.querySelector(".oferta");
+        console.log("Hermano anterior: " + oferta.previousElementSibling.textContent);
+        console.log("Hermano posterior: " + oferta.nextElementSibling.textContent);
+        console.log("Id de su padre: " + oferta.parentElement.id);
+    </script>
+</body>
+</html>

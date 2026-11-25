@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5, ejercicio 8</title>
+</head>
+<body>
+    <form id="registro">
+    <label>Nombre: <input id="nombre" name="nombre" type="text"></label><br>
+    <label>Correo: <input id="email" name="email" type="text"></label><br>
+    <label>Edad: <input id="edad" name="edad" type="number"></label><br>
+    <button type="submit">Registrar</button>
+    </form>
+    <p id="errores"></p>
+    <h3>Lista de alumnos <P>Numero de alumnos: <span id="contador"></span></P></h3>
+    <ul id="lista">
+
+    </ul>
+
+    <script>
+        const formulario = document.getElementById("registro");
+        const errores = document.getElementById("errores");
+        const lista = document.getElementById("lista");
+        let contador = document.getElementById("contador");
+        let cont = 0;
+        contador.textContent = cont;
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const nombre = formulario.elements.nombre.value.trim();
+            const edad = formulario.elements.edad.value;
+            const correo = formulario.elements.email.value;
+
+            let listaErrores = [];
+
+            if (nombre.length < 1) {
+                listaErrores.push("El campo nombre es obligatorio");
+            } else if (nombre.length < 3) {
+                listaErrores.push("El nombre es demasiado corto");
+            }
+
+            if (edad.length < 1) {
+                listaErrores.push("La edad es obligatoria");
+            } else if (edad < 18 || edad > 99) {
+                listaErrores.push("La edad tiene que ser entre 18 y 99");
+            }
+
+            if (correo.length < 1) {
+                listaErrores.push("El campo correo es obligatorio");
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+                listaErrores.push("El correo debe tener este formato **@**.**");
+            }
+
+            if (listaErrores.length > 0) {
+                errores.textContent = listaErrores.join(" · ");
+            } else {
+                let list = document.createElement("li");
+                const botonEliminar = document.createElement("button");
+                botonEliminar.textContent = "Eliminar";
+                list.textContent = "<<" + nombre + " (" + edad + " años) - " + correo + ">>";
+                list.append(botonEliminar);
+                lista.appendChild(list);
+                cont++;
+                contador.textContent = cont;
+                botonEliminar.addEventListener("click", borrar=>{
+                    botonEliminar.parentElement.remove();
+                    cont--;
+                    contador.textContent = cont;
+                })
+                errores.textContent = "";
+                formulario.reset();
+            }
+        });
+    </script>
+</body>
+</html>

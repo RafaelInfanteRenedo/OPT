@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5, ejercicio 7</title>
+</head>
+<body>
+    <form id="registro">
+    <label>Nombre: <input id="nombre" name="nombre" type="text"></label><br>
+    <label>Correo: <input id="email" name="email" type="text"></label><br>
+    <label>Edad: <input id="edad" name="edad" type="number"></label><br>
+    <label>Contraseña: <input id="clave" name="clave" type="password"></label><br>
+    <button type="submit">Registrar</button>
+    </form>
+    <p id="errores"></p>
+
+    <script>
+        const formulario = document.getElementById("registro");
+        const errores = document.getElementById("errores");
+
+        formulario.addEventListener("submit", function(evento) {
+            evento.preventDefault();
+
+            const nombre = formulario.elements.nombre.value.trim();
+            const edad = formulario.elements.edad.value;
+            const correo = formulario.elements.email.value;
+            const contraseña = formulario.elements.clave.value.trim();
+
+            let contraseñaAux = [];
+            contraseñaAux = contraseña.split("");
+
+            function tieneNumero() {
+                for (let char of contraseñaAux) {
+                    if (char >= "0" && char <= "9") {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            let listaErrores = [];
+
+            if (nombre.length < 1) {
+                listaErrores.push("El campo nombre es obligatorio");
+            } else if (nombre.length < 3) {
+                listaErrores.push("El nombre es demasiado corto");
+            }
+
+            if (edad.length < 1) {
+                listaErrores.push("La edad es obligatoria");
+            } else if (edad < 18 || edad > 99) {
+                listaErrores.push("La edad tiene que ser entre 18 y 99");
+            }
+
+            if (correo.length < 1) {
+                listaErrores.push("El campo correo es obligatorio");
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+                listaErrores.push("El correo debe tener este formato **@**.**");
+            }
+
+            if (contraseña.length < 1) {
+                listaErrores.push("El campo contraseña es obligatorio");
+            } else if (contraseña.length < 8) {
+                listaErrores.push("La contraseña debe tener mínimo 8 caracteres");
+            }else if(!tieneNumero()){
+                listaErrores.push("La contraseña debe tener minimo un numero");
+            }
+
+            if (listaErrores.length > 0) {
+                errores.textContent = listaErrores.join(" · ");
+            } else {
+                errores.textContent = "";
+                formulario.submit();
+            }
+        });
+    </script>
+</body>
+</html>
